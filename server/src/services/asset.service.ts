@@ -315,7 +315,13 @@ export class AssetService {
       }
     }
 
-    const files = [asset.thumbnailPath, asset.previewPath, asset.encodedVideoPath];
+    const files = [
+      asset.thumbnailPath,
+      asset.previewPath,
+      asset.encodedVideoPath,
+      asset.watermarkedThumbnailPath,
+      asset.watermarkedPreviewPath,
+    ];
     if (deleteOnDisk) {
       files.push(asset.sidecarPath, asset.originalPath);
     }
