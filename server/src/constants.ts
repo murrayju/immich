@@ -140,3 +140,5 @@ export const CLIP_MODEL_INFO: Record<string, ModelInfo> = {
   'nllb-clip-large-siglip__mrl': { dimSize: 1152 },
   'nllb-clip-large-siglip__v1': { dimSize: 1152 },
 };
+
+export const DEFAULT_WATERMARK = process.env.IMMICH_WATERMARK || 'sample';

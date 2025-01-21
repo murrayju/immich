@@ -6,6 +6,7 @@ import { Writable } from 'node:stream';
 import { promisify } from 'node:util';
 import sharp from 'sharp';
 import { Colorspace } from 'src/config';
+import { DEFAULT_WATERMARK } from 'src/constants';
 import { ILoggerRepository } from 'src/interfaces/logger.interface';
 import {
   IMediaRepository,
@@ -59,7 +60,7 @@ export class MediaRepository implements IMediaRepository {
       const overlaySize = Math.min(options.size / 4, 100);
       const fontSize = Math.floor(overlaySize / 4);
       pipeline.composite([
-        createWatermarkOverlay({ text: 'sample', width: overlaySize, height: overlaySize, fontSize }),
+        createWatermarkOverlay({ text: DEFAULT_WATERMARK, width: overlaySize, height: overlaySize, fontSize }),
       ]);
     }
 
