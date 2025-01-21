@@ -57,11 +57,10 @@ export class MediaRepository implements IMediaRepository {
     }
 
     if (options.watermark) {
-      const overlaySize = Math.min(options.size / 4, 100);
-      const fontSize = Math.floor(overlaySize / 4);
-      pipeline.composite([
-        createWatermarkOverlay({ text: DEFAULT_WATERMARK, width: overlaySize, height: overlaySize, fontSize }),
-      ]);
+      const text = DEFAULT_WATERMARK;
+      const overlaySize = Math.max(options.size / 8, 100);
+      const fontSize = Math.floor((overlaySize / 4) * (6 / text.length));
+      pipeline.composite([createWatermarkOverlay({ text, width: overlaySize, height: overlaySize, fontSize })]);
     }
 
     await pipeline
